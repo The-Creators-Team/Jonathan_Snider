@@ -1,5 +1,7 @@
 package com.example.koitlinlearning.codingchallenges
 
+
+import java.text.DecimalFormat
 import kotlin.math.floor
 
 fun main(args: Array<String>) {
@@ -14,6 +16,7 @@ fun main(args: Array<String>) {
 
 fun calculateChange(purchase: String) : String
 {
+    val decfor = DecimalFormat("0.00")
     val splitNumbers: List<String> = purchase.split(";")
     val purchasePrice= splitNumbers[0].toFloat()
     val cashGiven=splitNumbers[1].toFloat()
@@ -54,6 +57,7 @@ fun calculateChange(purchase: String) : String
             val amountToRemove=floor(change/entry.value)*entry.value
             println("total money to remove from change: $amountToRemove")
             change-=amountToRemove
+            change=decfor.format(change).toFloat()
             println("change after: $change")
         }
     }
