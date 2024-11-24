@@ -16,7 +16,7 @@ fun validateBankCard(cardId: String?, expiryDate: String?) :Boolean
 {
     if(cardId.isNullOrEmpty() || expiryDate.isNullOrEmpty())
     {
-        //println("either the card ID or expiry date is null/empty,  cannot check card")
+        println("either the card ID or expiry date is null/empty,  cannot check card")
         return false
     }
     val banks= mapOf("1121" to "ACME", "1111" to "ALFA", "AMEX" to "3796")
@@ -24,25 +24,25 @@ fun validateBankCard(cardId: String?, expiryDate: String?) :Boolean
     val checkRegex=Regex("^[0-9]*$")
     if(cardIdSanitized.length!=16)
     {
-        //println("invalid card ID, card ID has either too many or not enough digits")
+        println("invalid card ID, card ID has either too many or not enough digits")
         return false
     }
     if(!cardIdSanitized.matches(checkRegex))
     {
-        //println("invalid card ID, card ID contains non-numerical characters")
+        println("invalid card ID, card ID contains non-numerical characters")
         return false
     }
     val bankCheckSegment=cardId.substring(0,4)
-        if(!banks.containsKey(bankCheckSegment))
+    if(!banks.containsKey(bankCheckSegment))
         {
-            //println("invalid card ID, bank issuing segment does not match known bank")
+            println("invalid card ID, bank issuing segment does not match known bank")
             return false
         }
 
     val expiryDateCheckSegment=cardId.substring(cardId.length-4)
     if(!expiryDateCheckSegment.equals(expiryDate.replace("/","")))
     {
-        //println("invalid card ID, expiry date segment does not match the card's expiration date")
+        println("invalid card ID, expiry date segment does not match the card's expiration date")
         return false
     }
     return true

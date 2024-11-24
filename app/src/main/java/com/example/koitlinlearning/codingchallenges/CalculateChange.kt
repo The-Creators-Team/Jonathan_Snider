@@ -6,10 +6,10 @@ import kotlin.math.floor
 
 fun main(args: Array<String>) {
 
-    calculateChange("111.43;200.00")
-    //calculateChange("15.00;15.00")
-    //calculateChange("18.75;10.00")
-    //calculateChange("1.25;2.00")
+    println(calculateChange("111.43;200.00"))
+    println(calculateChange("15.00;15.00"))
+    println(calculateChange("18.75;10.00"))
+    println(calculateChange("1.25;2.00"))
 
 
 }
@@ -51,16 +51,16 @@ fun calculateChange(purchase: String) : String
         entry->
         if(change/entry.value>=1)
         {
-            println("checking: $entry.key")
-            println("change before: $change")
+            //println("checking: $entry.key")
+            //println("change before: $change")
             changeMap.put(entry.key,floor(change/entry.value))
             val amountToRemove=floor(change/entry.value)*entry.value
-            println("total money to remove from change: $amountToRemove")
+            //println("total money to remove from change: $amountToRemove")
             change-=amountToRemove
             change=decfor.format(change).toFloat()
-            println("change after: $change")
+            //println("change after: $change")
         }
     }
-    println(changeMap.toString())
+    //println(changeMap.toString())
     return(changeMap.toString())
 }
